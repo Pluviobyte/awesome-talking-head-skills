@@ -1,6 +1,7 @@
 # 样本与观察记录：秋芝2046
 
 - 平台主页：https://www.douyin.com/user/MS4wLjABAAAAwbbVuf1W2DdgRe0xCa0oxg1ZIHbzuiTzyjq3NcOVgBuu6qIidYlMYqbL3ZFY2swu
+- 开头 25 秒片段：[`samples/talking-head-qiuzhi2046/`](../../../samples/talking-head-qiuzhi2046/)，文件名 = 序号_作品ID
 - 采集日期：2026-10-27；点赞数为采集时的数值
 - 方法：只看每条视频开头 20 秒。先每秒 2 帧看整体结构，再把真人全屏段按每秒 4 帧看手势，台词转写后与动作逐句对齐
 

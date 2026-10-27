@@ -1,10 +1,11 @@
-# 原视频、音频、抽帧不进公开仓库，只放链接和结构化提炼
+# 只收录 samples/ 下的开头片段；其他位置的音视频（完整原片、音频、工作文件）不进仓库
 *.mp4
 *.mov
 *.m4a
 *.wav
 *.mp3
 *.webm
+!samples/**/*.mp4
 raw/
 private/
 .DS_Store

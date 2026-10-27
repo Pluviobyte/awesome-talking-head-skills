@@ -10,7 +10,7 @@ description: 拆解一位口播博主开头 15–20 秒的肢体动作、表情�
 ## 原则
 
 - **只提炼动作、节奏和结构。** 不收录对方的长相、服装、场景细节和逐字台词；台词只记录句子功能（打招呼、痛点提问、承诺……），口头禅最多引用几个字说明句式
-- **原片只留在本地。** 视频、音频、抽帧图、完整转写都不进仓库（`.gitignore` 已排除音视频，抽帧放在仓库外的工作目录）
+- **仓库只收开头片段。** 每条样本截开头 25 秒放进 `samples/talking-head-<slug>/`，文件名「序号_作品ID」；完整原片、音频、抽帧图、完整转写留在仓库外的工作目录（`.gitignore` 只放行 `samples/` 下的 mp4）
 - **不要把原视频当参考视频喂给生成模型**，否则对方的脸、衣服、背景可能串进成片
 - 只写可复现的具体动作：哪只手、什么形状、在什么高度、持续多久、卡在哪个词上。不写「自然」「丰富」「有感染力」这类模型无法执行的词
 - 区分「观察」和「建议」：观察写进 `references/samples.md`，建议写进 `SKILL.md` 的「数字人生成建议」
@@ -67,7 +67,8 @@ scripts/contact_sheet.sh clips/xxx.mp4 sheets/xxx_10.5s.jpg 10.5 6 4 6x4 400
 
 复制 `templates/creator-skill-template.md` 到 `skills/talking-head-<slug>/SKILL.md` 填写；样本表和观察写进 `references/samples.md`。然后：
 
-- 在 `data/samples.csv` 追加样本行
+- 把 `clips/` 里的开头片段按「序号_作品ID.mp4」复制到 `samples/talking-head-<slug>/`
+- 在 `data/samples.csv` 追加样本行（含 `clip` 列）
 - 在仓库 `README.md` 的博主表里加一行
 
 ## 自查清单
@@ -76,5 +77,5 @@ scripts/contact_sheet.sh clips/xxx.mp4 sheets/xxx_10.5s.jpg 10.5 6 4 6x4 400
 - [ ] 有「禁止动作」
 - [ ] 开头结构模板里的台词只写功能，没有抄原句
 - [ ] 没有描述对方的长相、服装和具体场景
-- [ ] 仓库里没有视频、音频、截图和完整转写
+- [ ] 仓库里只有 `samples/` 下的开头片段，没有完整原片、音频、截图和完整转写
 - [ ] 「生成描述示例」是原创的，能直接改成自己的

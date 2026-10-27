@@ -4,7 +4,7 @@
 
 用 Agent 加视频模型做口播数字人时，最常见的问题是手乱比划、崩手、表情和内容对不上。只写「自然讲解、手势丰富」，模型就真的给你「丰富」。这个仓库做的事，是把真人博主的动作规律逐帧数出来，翻译成模型能执行的文字。
 
-> English: A collection of Agent Skills that describe how top Chinese talking-head creators move on camera (gesture vocabulary, timing, framing, opening structure), so AI agents can write precise motion specs for digital-human videos. Only motion patterns are documented; no footage, likeness or transcripts are included.
+> English: A collection of Agent Skills that describe how top Chinese talking-head creators move on camera (gesture vocabulary, timing, framing, opening structure), so AI agents can write precise motion specs for digital-human videos. Each analyzed video is referenced by link, with its first 25 seconds kept under `samples/` for study.
 
 ## 一个共同规律
 
@@ -22,7 +22,16 @@
 
 想拆一位新博主：用 [talking-head-analyzer](skills/talking-head-analyzer/SKILL.md)，里面有流程、抽帧脚本和 Skill 模板。
 
-每条样本的链接、发布日期和采集时点赞数见 [`data/samples.csv`](data/samples.csv)。
+每条样本的链接、发布日期和采集时点赞数见 [`data/samples.csv`](data/samples.csv)。拆解时看的开头 25 秒片段放在 [`samples/`](samples/)，按 Skill 分目录，文件名是「序号_作品ID」，和各 Skill 的 `references/samples.md` 对应。
+
+## 目录
+
+```
+skills/<name>/SKILL.md              风格 Skill（安装时只复制这个目录）
+skills/<name>/references/samples.md 样本表和逐条观察（第几秒出现哪个手势）
+samples/<name>/*.mp4                对应样本的开头 25 秒片段
+data/samples.csv                    全部样本索引
+```
 
 ## 怎么选
 
@@ -60,15 +69,15 @@ cp -r skills/talking-head-li-yifan <你的项目>/.claude/skills/
 
 ## 收录原则
 
-- 只提炼动作节奏和结构，不收录博主的原视频、截图、长相或完整逐字稿
-- 每条样本只记录公开链接和基本数据，原片请到原平台观看
-- Skill 里的文字描述是给 Agent 用的。**不要把原视频当参考视频喂给生成模型**，否则对方的脸、衣服、背景可能串进成片
+- Skill 只提炼动作节奏和结构，不描述博主的长相，不收录完整逐字稿
+- `samples/` 里的片段只截每条视频的开头 25 秒，用于动作研究和对照学习，版权归原作者。完整视频请到原平台观看
+- **不要把样本片段当参考视频喂给生成模型**，否则对方的脸、衣服、背景可能串进成片。Skill 里的文字描述才是给 Agent 用的
 - 参考图只用自己或已获授权的形象；发布时按平台要求标注 AI 生成内容
-- 本仓库与所列博主无合作关系。如果你是被收录的创作者，希望修改或移除，请提 issue
+- 本仓库与所列博主无合作关系。如果你是被收录的创作者，希望修改或移除内容（包括样本片段），请提 issue，会尽快处理
 
 ## 贡献
 
-欢迎补充新的博主。按 [talking-head-analyzer](skills/talking-head-analyzer/SKILL.md) 的流程拆解，提交时附上 `skills/talking-head-<slug>/` 目录、`data/samples.csv` 的新增行和本 README 表格的新增行。
+欢迎补充新的博主。按 [talking-head-analyzer](skills/talking-head-analyzer/SKILL.md) 的流程拆解，提交时附上 `skills/talking-head-<slug>/` 目录、`samples/talking-head-<slug>/` 的开头片段、`data/samples.csv` 的新增行和本 README 表格的新增行。
 
 ## License
 
