@@ -1,0 +1,10 @@
+# 原视频、音频、抽帧不进公开仓库，只放链接和结构化提炼
+*.mp4
+*.mov
+*.m4a
+*.wav
+*.mp3
+*.webm
+raw/
+private/
+.DS_Store
